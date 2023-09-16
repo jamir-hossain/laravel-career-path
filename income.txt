@@ -1,3 +1,0 @@
-Salary - 10
-Business - 20
-Business - 50
