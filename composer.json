@@ -1,0 +1,16 @@
+{
+  "name": "cli-app/banking",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "jamir-hossain",
+      "email": "contact.jamir@gmail.com"
+    }
+  ],
+  "require": {}
+}

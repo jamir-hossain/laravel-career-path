@@ -1,5 +1,25 @@
 <?php
 
+
+
+// // Data to be converted to JSON
+// $data = [
+//    "name" => "John Doe",
+//    "email" => "john@example.com",
+//    "age" => 30
+// ];
+
+// // Encode the data to JSON format
+// $jsonData = json_encode($data);
+
+// // Define the file path where you want to store the JSON data
+// $filePath = "data.json";
+
+// // Write the JSON data to the file
+// file_put_contents($filePath, $jsonData);
+
+// echo "JSON data has been created and stored in $filePath";
+
 class IncomeExpense
 {
    // Properties
