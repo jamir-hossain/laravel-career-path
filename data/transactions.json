@@ -1,1 +1,6 @@
-[]
+[
+  { "email": "jamir@gmail.com", "transaction_type": "deposit", "amount": 500 },
+  { "email": "jamir@gmail.com", "transaction_type": "deposit", "amount": 300 },
+  { "email": "jamir@gmail.com", "transaction_type": "deposit", "amount": 400 },
+  { "email": "jamir@gmail.com", "transaction_type": "withdraw", "amount": 500 }
+]

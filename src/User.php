@@ -58,7 +58,8 @@ class User
          'name' => $this->name,
          'email' => $this->email,
          'password' => $this->password,
-         'role' => 'customer'
+         'role' => 'customer',
+         'balance' => 0,
       ];
 
       $this->saveUser($user);
