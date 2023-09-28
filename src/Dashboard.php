@@ -5,7 +5,6 @@ namespace App;
 class Dashboard
 {
    private $user;
-   private $amount;
    private $logout = false;
    const TRANSACTIONS = "data/transactions.json";
    const USER_BALANCE = "data/users.json";
@@ -48,17 +47,27 @@ class Dashboard
                break;
 
             case '2':
-               $this->deposit();
+               $amount = readline("Enter deposit amount: ");
+               $this->transactionHandler($amount, 'deposit', $this->user['email']);
+               $this->balanceHandler($amount, 'deposit', $this->user['email']);
                break;
 
             case '3':
-               $this->withdraw();
+               $amount = readline("Enter withdraw amount: ");
+               $this->transactionHandler($amount, 'withdraw', $this->user['email']);
+               $this->balanceHandler($amount, 'withdraw', $this->user['email']);
                break;
 
             case '4':
+               $balance = $this->getBalance();
+               echo "Total balance : $balance\n";
                break;
 
             case '5':
+               $email = readline("Enter receiver account email: ");
+               $amount = readline("Enter the transfer amount: ");
+               $this->transferMoney($email, $amount);
+               $this->transactionHandler($amount, 'transfer', $this->user['email']);
                break;
 
             case '6':
@@ -73,45 +82,23 @@ class Dashboard
 
 
 
-   public function getTransactions()
+   public function getUsers()
    {
       // Load existing JSON data from the file
-      $jsonData = file_get_contents(self::TRANSACTIONS);
+      $jsonData = file_get_contents(self::USER_BALANCE);
       $userList = json_decode($jsonData, true);
 
       return $userList;
    }
 
 
-   public function deposit()
+   public function getTransactions()
    {
-      $amount = readline("Enter deposit amount: ");
-      $this->transactionHandler($amount, 'deposit');
-      $this->addBalance($amount);
-   }
+      // Load existing JSON data from the file
+      $jsonData = file_get_contents(self::TRANSACTIONS);
+      $transactionList = json_decode($jsonData, true);
 
-
-   public function withdraw()
-   {
-      $amount = readline("Enter withdraw amount: ");
-      $this->transactionHandler($amount, 'withdraw');
-      $this->removeBalance($amount);
-   }
-
-
-   public function transactionHandler(int $money, string $type)
-   {
-      $deposit = [
-         'email' => $this->user['email'],
-         'transaction_type' => $type,
-         'amount' => $money,
-      ];
-
-      $transactions = $this->getTransactions();
-      array_push($transactions, $deposit);
-
-      // // Write the updated JSON data back to the file
-      file_put_contents(self::TRANSACTIONS, json_encode($transactions));
+      return $transactionList;
    }
 
 
@@ -123,7 +110,7 @@ class Dashboard
 
       $userBalance = 0;
       foreach ($balanceList as $balance) {
-         if ($balance['balance'] === $this->user['email']) {
+         if ($balance['email'] === $this->user['email']) {
             $userBalance = $balance['balance'];
             break;
          }
@@ -133,15 +120,45 @@ class Dashboard
    }
 
 
-   public function addBalance(int $amount)
+   public function transferMoney(string $email, int $amount)
    {
       // Load existing JSON data from the file
       $jsonData = file_get_contents(self::USER_BALANCE);
       $userList = json_decode($jsonData, true);
 
-      $userList = array_map(function ($user) use ($amount) {
-         if ($user['email'] === $this->user['email']) {
+      $userList = array_map(function ($user) use ($amount, $email) {
+         if ($user['email'] === $email) {
             $user['balance'] += $amount;
+            return $user;
+         } else {
+            if ($user['email'] === $this->user['email']) {
+               $user['balance'] -= $amount;
+               return $user;
+            } else {
+               return $user;
+            }
+         }
+      }, $userList);
+
+      // Write the updated JSON data back to the file
+      file_put_contents(self::USER_BALANCE, json_encode($userList));
+   }
+
+
+   public function balanceHandler(int $amount, string $type, string $email)
+   {
+      // Load existing JSON data from the file
+      $jsonData = file_get_contents(self::USER_BALANCE);
+      $userList = json_decode($jsonData, true);
+
+      $userList = array_map(function ($user) use ($amount, $type, $email) {
+         if ($user['email'] === $email) {
+            if ($type === 'deposit') {
+               $user['balance'] += $amount;
+            }
+            if ($type === 'withdraw') {
+               $user['balance'] -= $amount;
+            }
             return $user;
          } else {
             return $user;
@@ -153,22 +170,18 @@ class Dashboard
    }
 
 
-   public function removeBalance(int $amount)
+   public function transactionHandler(int $money, string $type, string $email)
    {
-      // Load existing JSON data from the file
-      $jsonData = file_get_contents(self::USER_BALANCE);
-      $userList = json_decode($jsonData, true);
+      $deposit = [
+         'email' => $email,
+         'transaction_type' => $type,
+         'amount' => $money,
+      ];
 
-      $userList = array_map(function ($user) use ($amount) {
-         if ($user['email'] === $this->user['email']) {
-            $user['balance'] -= $amount;
-            return $user;
-         } else {
-            return $user;
-         }
-      }, $userList);
+      $transactions = $this->getTransactions();
+      array_push($transactions, $deposit);
 
-      // Write the updated JSON data back to the file
-      file_put_contents(self::USER_BALANCE, json_encode($userList));
+      // // Write the updated JSON data back to the file
+      file_put_contents(self::TRANSACTIONS, json_encode($transactions));
    }
 }
