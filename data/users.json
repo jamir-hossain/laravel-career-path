@@ -4,7 +4,7 @@
     "email": "jamir@gmail.com",
     "password": "1234",
     "role": "customer",
-    "balance": 1300
+    "balance": 2100
   },
   {
     "name": "Sadik",
@@ -26,5 +26,26 @@
     "password": "1234",
     "role": "customer",
     "balance": 0
+  },
+  {
+    "name": "User",
+    "email": "user@gmail.com",
+    "password": "1234",
+    "role": "customer",
+    "balance": 0
+  },
+  {
+    "name": "Admin",
+    "email": "admin@gmail.com",
+    "password": "1234",
+    "role": "admin",
+    "balance": 0
+  },
+  {
+    "name": "jamir@gmail.com",
+    "email": "jamir@gmail.cmo",
+    "password": "1234",
+    "role": "customer",
+    "balance": 700
   }
 ]

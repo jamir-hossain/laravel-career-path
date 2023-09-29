@@ -27,7 +27,7 @@ while (true) {
 
       case '2':
          $user = new User;
-         $user->register();
+         $user->register('customer');
          break;
 
       case '3':
