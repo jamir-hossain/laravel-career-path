@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace Cli;
 
-use App\Dashboard;
+use Cli\Dashboard;
 
 class AdminDashboard  extends Dashboard
 {

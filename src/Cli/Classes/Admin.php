@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace Cli;
 
-use App\Register;
+use Cli\Register;
 
 class Admin extends Register
 {

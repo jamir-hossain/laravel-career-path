@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Cli;
 
 class Register
 {

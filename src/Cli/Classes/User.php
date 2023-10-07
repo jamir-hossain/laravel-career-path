@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace Cli;
 
-use App\Register;
-use App\UserDashboard;
-use App\AdminDashboard;
+use Cli\Register;
+use Cli\UserDashboard;
+use Cli\AdminDashboard;
 
 class User extends Register
 {

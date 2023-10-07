@@ -1,8 +1,7 @@
 <?php
 
-use App\Register;
+use Cli\Register;
 
-require 'vendor/autoload.php';
 
 $admin = new Register();
 $admin->register('admin');
