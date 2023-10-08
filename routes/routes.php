@@ -6,6 +6,11 @@ use App\Helper\App;
 use App\Model\UserModel;
 
 Router::get('', function () {
+    $user = new UserModel();
+    $result = $user->find(1);
+
+    print_r($result);
+
     App::view('index');
 });
 
