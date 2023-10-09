@@ -20,7 +20,6 @@ class Model
    public function create(array $data)
    {
       // $sql = "INSERT INTO $this->table (...) VALUES (...);";
-
       $sql = "INSERT INTO $this->table (";
       $sql .= implode(', ', array_keys($data));
       $sql .= ") VALUES (";

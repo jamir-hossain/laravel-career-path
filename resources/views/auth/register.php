@@ -33,24 +33,44 @@
       <div class="px-6 py-12 bg-white shadow sm:rounded-lg sm:px-12">
         <form class="space-y-6" action="#" method="POST">
           <div>
-            <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
+            <label for="name" class="block text-sm font-medium leading-6 text-gray-900">
+              Name
+            </label>
             <div class="mt-2">
               <input id="name" name="name" type="text" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6 p-2" />
             </div>
           </div>
 
           <div>
-            <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+            <label for="email" class="block text-sm font-medium leading-6 text-gray-900">
+              Email address
+            </label>
             <div class="mt-2">
               <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6 p-2" />
             </div>
+
+            <?php
+            if (isset($errors) && isset($errors['email'])) {
+              $email = $errors['email'];
+              print("<small class='text-red-500'>$email</small>");
+            }
+            ?>
           </div>
 
           <div>
-            <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+            <label for="password" class="block text-sm font-medium leading-6 text-gray-900">
+              Password
+            </label>
             <div class="mt-2">
               <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6 p-2" />
             </div>
+
+            <?php
+            if (isset($errors) && isset($errors['password'])) {
+              $password = $errors['password'];
+              print("<small class='text-red-500'>$password</small>");
+            }
+            ?>
           </div>
 
           <div>
@@ -60,6 +80,7 @@
           </div>
         </form>
       </div>
+
       <p class="mt-10 text-sm text-center text-gray-500">
         Already a customer?
         <a href="/login" class="font-semibold leading-6 text-emerald-600 hover:text-emerald-500">Sign-in</a>

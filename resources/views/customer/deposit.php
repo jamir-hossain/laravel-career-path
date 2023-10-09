@@ -37,10 +37,10 @@
               <div class="hidden sm:block">
                 <div class="flex space-x-4">
                   <!-- Current: "bg-emerald-700 text-white", Default: "text-white hover:bg-emerald-500 hover:bg-opacity-75" -->
-                  <a href="./dashboard.html" class="text-white hover:bg-emerald-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-sm font-medium" aria-current="page">Dashboard</a>
-                  <a href="./deposit.html" class="bg-emerald-700 text-white rounded-md py-2 px-3 text-sm font-medium">Deposit</a>
-                  <a href="./withdraw.html" class="text-white hover:bg-emerald-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-sm font-medium">Withdraw</a>
-                  <a href="./transfer.html" class="text-white hover:bg-emerald-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-sm font-medium">Transfer</a>
+                  <a href="/customer/dashboard" class="text-white hover:bg-emerald-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-sm font-medium" aria-current="page">Dashboard</a>
+                  <a href="/customer/deposit" class="bg-emerald-700 text-white rounded-md py-2 px-3 text-sm font-medium">Deposit</a>
+                  <a href="/customer/withdraw" class="text-white hover:bg-emerald-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-sm font-medium">Withdraw</a>
+                  <a href="/customer/transfer" class="text-white hover:bg-emerald-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-sm font-medium">Transfer</a>
                 </div>
               </div>
             </div>
@@ -87,13 +87,13 @@
         <!-- Mobile menu, show/hide based on menu state. -->
         <div x-show="mobileMenuOpen" class="sm:hidden" id="mobile-menu">
           <div class="space-y-1 pt-2 pb-3">
-            <a href="./dashboard.html" class="text-white hover:bg-emerald-500 hover:bg-opacity-75 block rounded-md py-2 px-3 text-base font-medium" aria-current="page">Dashboard</a>
+            <a href="/customer/dashboard" class="text-white hover:bg-emerald-500 hover:bg-opacity-75 block rounded-md py-2 px-3 text-base font-medium" aria-current="page">Dashboard</a>
 
-            <a href="./deposit.html" class="bg-emerald-700 text-white block rounded-md py-2 px-3 text-base font-medium">Deposit</a>
+            <a href="/customer/deposit" class="bg-emerald-700 text-white block rounded-md py-2 px-3 text-base font-medium">Deposit</a>
 
-            <a href="./withdraw.html" class="text-white hover:bg-emerald-500 hover:bg-opacity-75 block rounded-md py-2 px-3 text-base font-medium">Withdraw</a>
+            <a href="/customer/withdraw" class="text-white hover:bg-emerald-500 hover:bg-opacity-75 block rounded-md py-2 px-3 text-base font-medium">Withdraw</a>
 
-            <a href="./transfer.html" class="text-white hover:bg-emerald-500 hover:bg-opacity-75 block rounded-md py-2 px-3 text-base font-medium">Transfer</a>
+            <a href="/customer/transfer" class="text-white hover:bg-emerald-500 hover:bg-opacity-75 block rounded-md py-2 px-3 text-base font-medium">Transfer</a>
           </div>
           <div class="border-t border-emerald-700 pb-3 pt-4">
             <div class="flex items-center px-5">

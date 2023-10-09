@@ -37,8 +37,8 @@
               <div class="hidden sm:block">
                 <div class="flex space-x-4">
                   <!-- Current: "bg-sky-700 text-white", Default: "text-white hover:bg-sky-500 hover:bg-opacity-75" -->
-                  <a href="./customers.html" class="text-white hover:bg-sky-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-sm font-medium">Customers</a>
-                  <a href="./transactions.html" class="text-white hover:bg-sky-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-sm font-medium">Transactions</a>
+                  <a href="/admin/customers" class="text-white hover:bg-sky-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-sm font-medium">Customers</a>
+                  <a href="/admin/transactions" class="text-white hover:bg-sky-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-sm font-medium">Transactions</a>
                 </div>
               </div>
             </div>
@@ -85,8 +85,8 @@
         <!-- Mobile menu, show/hide based on menu state. -->
         <div x-show="mobileMenuOpen" class="sm:hidden" id="mobile-menu">
           <div class="space-y-1 pt-2 pb-3">
-            <a href="./customers.html" class="text-white hover:bg-sky-500 hover:bg-opacity-75 block rounded-md py-2 px-3 text-base font-medium">Customers</a>
-            <a href="./transactions.html" class="text-white hover:bg-sky-500 hover:bg-opacity-75 block rounded-md py-2 px-3 text-base font-medium">Transactions</a>
+            <a href="/admin/customers" class="text-white hover:bg-sky-500 hover:bg-opacity-75 block rounded-md py-2 px-3 text-base font-medium">Customers</a>
+            <a href="/admin/transactions" class="text-white hover:bg-sky-500 hover:bg-opacity-75 block rounded-md py-2 px-3 text-base font-medium">Transactions</a>
           </div>
           <div class="border-t border-sky-700 pb-3 pt-4">
             <div class="flex items-center px-5">

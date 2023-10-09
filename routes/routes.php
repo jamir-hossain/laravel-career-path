@@ -1,39 +1,31 @@
 <?php
 
-require_once 'Router.php';
-
 use App\Helper\App;
+use App\Middleware\AuthMiddleware;
 use App\Model\UserModel;
 
+require_once 'Router.php';
+require_once 'auth.php';
+require_once 'admin.php';
+require_once 'customer.php';
+
+
 Router::get('', function () {
-    $user = new UserModel();
-    $result = $user->find(1);
+    session_start();
+    $user = null;
 
-    print_r($result);
+    if (isset($_SESSION["user"])) {
+        $user = $_SESSION["user"];
+    }
 
-    App::view('index');
+    App::view('index', ['user' => $user]);
 });
 
-Router::get('login', function () {
-    App::view('auth/login');
+Router::get('auth/logout', function () {
+    $auth = new AuthMiddleware;
+
+    session_start();
+    session_unset();
+
+    header("Location: /");
 });
-
-Router::get('register', function () {
-    App::view('auth/register');
-});
-
-Router::post('register', function () {
-    // print_r($_POST);
-    $user = new UserModel();
-    $user->create($_POST);
-
-    App::view('auth/register');
-});
-
-// Router::post('user_page', function () {
-//     $data = [
-//         'name' => $_POST['name']
-//     ];
-
-//     echo "user post page";
-// });
