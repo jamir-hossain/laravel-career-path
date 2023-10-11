@@ -153,7 +153,7 @@
                 Current Balance
               </dt>
               <dd class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-gray-900">
-                $10,115,091.00
+                <?php print($user['balance']) ?>
               </dd>
             </div>
           </dl>

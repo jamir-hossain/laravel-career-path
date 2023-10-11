@@ -60,7 +60,12 @@
 
                 <!-- Dropdown menu -->
                 <div x-show="open" @click.away="open = false" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+                  <p class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    <?php print($user['email']) ?>
+                  </p>
+                  <a href="/auth/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2">
+                    Sign out
+                  </a>
                 </div>
               </div>
             </div>
@@ -100,11 +105,13 @@
                 </span>
               </div>
               <div class="ml-3">
-                <div class="text-base font-medium text-white">
-                  Ahmed Shamim Hasan Shaon
-                </div>
-                <div class="text-sm font-medium text-sky-300">
-                  ahmed@shamim.com
+                <div class="ml-3">
+                  <div class="text-base font-medium text-white">
+                    <?php print($user['name']) ?>
+                  </div>
+                  <div class="text-sm font-medium text-sky-300">
+                    <?php print($user['email']) ?>
+                  </div>
                 </div>
               </div>
               <button type="button" class="ml-auto flex-shrink-0 rounded-full bg-sky-600 p-1 text-sky-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-sky-600">
@@ -115,7 +122,9 @@
               </button>
             </div>
             <div class="mt-3 space-y-1 px-2">
-              <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-sky-500 hover:bg-opacity-75">Sign out</a>
+              <a href="/auth/logout" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-emerald-500 hover:bg-opacity-75">
+                Sign out
+              </a>
             </div>
           </div>
         </div>

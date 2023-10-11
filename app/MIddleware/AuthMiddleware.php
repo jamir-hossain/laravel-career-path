@@ -2,6 +2,8 @@
 
 namespace App\Middleware;
 
+use App\Model\CustomerModel;
+
 class AuthMiddleware
 {
    private $authUser;
@@ -35,6 +37,9 @@ class AuthMiddleware
 
    public function user()
    {
-      return $this->authUser;
+      $customer = new CustomerModel();
+      $user = $customer->find($this->authUser['id']);
+
+      return $user;
    }
 }

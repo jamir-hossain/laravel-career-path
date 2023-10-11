@@ -2,7 +2,7 @@
 
 use App\Helper\App;
 use App\Middleware\AuthMiddleware;
-use App\Model\UserModel;
+use App\Model\CustomerModel;
 
 
 Router::get('login', function () {
@@ -19,8 +19,8 @@ Router::post('login', function () {
       $email = $_POST['email'];
       $password = $_POST['password'];
 
-      $user = new UserModel();
-      $result = $user->where('email', $email);
+      $customer = new CustomerModel();
+      $result = $customer->where('email', $email);
 
       if (!$result) {
          $error = 'Email or password not match';
@@ -58,8 +58,8 @@ Router::post('register', function () {
       $password = $_POST['password'];
       // unset($_POST['password']);
 
-      $user = new UserModel();
-      $result = $user->where('email', $email);
+      $customer = new CustomerModel();
+      $result = $customer->where('email', $email);
       if ($result) {
          $errors['email'] = 'Email already used by another account';
       }
@@ -75,7 +75,7 @@ Router::post('register', function () {
       }
 
       $_POST['role'] = 'customer';
-      $user->create($_POST);
+      $customer->create($_POST);
       header("Location: /login");
    } catch (\Throwable $th) {
       header("Location: /register");

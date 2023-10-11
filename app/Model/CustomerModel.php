@@ -3,10 +3,10 @@
 namespace App\Model;
 
 
-class UserModel extends Model
+class CustomerModel extends Model
 {
    public function __construct()
    {
-      parent::__construct('users');
+      parent::__construct('customers');
    }
 }

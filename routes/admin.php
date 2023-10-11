@@ -4,7 +4,7 @@ require_once 'Router.php';
 
 use App\Helper\App;
 use App\Middleware\AuthMiddleware;
-use App\Model\UserModel;
+use App\Model\CustomerModel;
 
 
 Router::get('create/admin', function () {
@@ -22,9 +22,9 @@ Router::post('create/admin', function () {
       $password = $_POST['password'];
       // unset($_POST['password']);
 
-      $user = new UserModel();
-      $result = $user->where('email', $email);
-      $admin = $user->where('role', 'admin');
+      $customer = new CustomerModel();
+      $result = $customer->where('email', $email);
+      $admin = $customer->where('role', 'admin');
 
       if ($result) {
          $errors['email'] = 'Email already used by another account';
@@ -45,7 +45,7 @@ Router::post('create/admin', function () {
 
       $_POST['name'] = 'Admin';
       $_POST['role'] = 'admin';
-      $user->create($_POST);
+      $customer->create($_POST);
       header("Location: /login");
    } catch (\Throwable $th) {
       header("Location: /register");
@@ -56,23 +56,23 @@ Router::post('create/admin', function () {
 Router::get('admin/customers', function () {
    $auth = new AuthMiddleware;
 
-   App::view('admin/customers');
+   App::view('admin/customers', ['user' => $auth->user()]);
 });
 
 Router::get('admin/transactions', function () {
    $auth = new AuthMiddleware;
 
-   App::view('admin/transactions');
+   App::view('admin/transactions', ['user' => $auth->user()]);
 });
 
 Router::get('admin/add-customer', function () {
    $auth = new AuthMiddleware;
 
-   App::view('admin/add_customer');
+   App::view('admin/add_customer', ['user' => $auth->user()]);
 });
 
 Router::get('admin/customer-transactions', function () {
    $auth = new AuthMiddleware;
 
-   App::view('admin/customer_transactions');
+   App::view('admin/customer_transactions', ['user' => $auth->user()]);
 });
