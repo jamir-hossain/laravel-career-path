@@ -44,18 +44,42 @@ class TransactionModel extends Model
                transactions.amount,
                transactions.created_at,
                transactions.updated_at,
-               customers.id AS customer_id,
-               customers.name AS customer_name,
-               customers.email AS customer_email
+               customers.id AS receiver_id,
+               customers.name AS receiver_name,
+               customers.email AS receiver_email
          FROM transactions
-         JOIN customers ON transactions.customer_id = customers.id
+         JOIN customers ON transactions.receiver_id = customers.id
          WHERE transactions.$key = '$value';
       ";
       $stmt = $this->storage->prepare($sql);
       $stmt->execute();
 
       // Fetch the result as an associative array
-      $result = $stmt->fetch(PDO::FETCH_ASSOC);
+      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      return $result;
+   }
+
+
+   public function getAllWithRelation()
+   {
+      $sql = "SELECT
+               transactions.id,
+               transactions.payment_type,
+               transactions.amount,
+               transactions.created_at,
+               transactions.updated_at,
+               customers.id AS receiver_id,
+               customers.name AS receiver_name,
+               customers.email AS receiver_email
+         FROM transactions
+         JOIN customers ON transactions.receiver_id = customers.id;
+      ";
+      $stmt = $this->storage->prepare($sql);
+      $stmt->execute();
+
+      // Fetch the result as an associative array
+      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       return $result;
    }

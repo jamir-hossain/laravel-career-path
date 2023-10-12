@@ -19,14 +19,14 @@ class CustomerController
    public function deposit($amount)
    {
       $this->validateAmount($amount, 'customer/deposit');
-      $this->createTransaction($amount, 'deposit');
+      $this->createTransaction($amount, $this->customer['id'], 'deposit');
       header("Location: /customer/deposit");
    }
 
    public function withdraw($amount)
    {
       $this->validateAmount($amount, 'customer/withdraw');
-      $this->createTransaction($amount, 'withdraw');
+      $this->createTransaction($amount, $this->customer['id'], 'withdraw');
       header("Location: /customer/withdraw");
    }
 
@@ -43,17 +43,18 @@ class CustomerController
       }
 
       $this->validateAmount($amount, 'customer/transfer');
-      $this->createTransaction($amount, 'transfer');
+      $this->createTransaction($amount, $user['id'], 'transfer');
 
       $customer->update($user['id'], ['balance' => $user['balance'] + $amount]);
       header("Location: /customer/transfer");
    }
 
 
-   private function createTransaction($amount, $type)
+   private function createTransaction($amount, $receiverId, $type)
    {
       (new TransactionModel)->create([
          'customer_id' => $this->customer['id'],
+         'receiver_id' => $receiverId,
          'payment_type' => $type,
          'amount' => $amount
       ]);

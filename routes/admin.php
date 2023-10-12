@@ -2,77 +2,39 @@
 
 require_once 'Router.php';
 
+use App\Controller\AdminController;
 use App\Helper\App;
 use App\Middleware\AuthMiddleware;
-use App\Model\CustomerModel;
-
 
 Router::get('create/admin', function () {
    new AuthMiddleware;
-
    App::view('admin/create');
 });
 
 Router::post('create/admin', function () {
-   new AuthMiddleware;
-   $errors = ['email' => null, 'password' => null];
-
-   try {
-      $email = $_POST['email'];
-      $password = $_POST['password'];
-      // unset($_POST['password']);
-
-      $customer = new CustomerModel();
-      $result = $customer->where('email', $email);
-      $admin = $customer->where('role', 'admin');
-
-      if ($result) {
-         $errors['email'] = 'Email already used by another account';
-      }
-      if (strlen($password) < 4) {
-         $errors['password'] = 'Minimum password length will be 4 characters';
-      }
-      if ($admin) {
-         $errors['email'] = 'Admin is already exists';
-      }
-
-      foreach ($errors as $key => $value) {
-         if ($value) {
-            App::view('admin/create', ['errors' => $errors]);
-            return;
-         }
-      }
-
-      $_POST['name'] = 'Admin';
-      $_POST['role'] = 'admin';
-      $customer->create($_POST);
-      header("Location: /login");
-   } catch (\Throwable $th) {
-      header("Location: /register");
-   }
+   $email = $_POST['email'];
+   $password = $_POST['password'];
+   (new AdminController)->createAdmin($email, $password);
 });
 
 
 Router::get('admin/customers', function () {
-   $auth = new AuthMiddleware;
-
-   App::view('admin/customers', ['user' => $auth->user()]);
+   (new AdminController)->customers();
 });
 
 Router::get('admin/transactions', function () {
-   $auth = new AuthMiddleware;
-
-   App::view('admin/transactions', ['user' => $auth->user()]);
+   (new AdminController)->transactions();
 });
 
 Router::get('admin/add-customer', function () {
    $auth = new AuthMiddleware;
-
    App::view('admin/add_customer', ['user' => $auth->user()]);
 });
 
-Router::get('admin/customer-transactions', function () {
-   $auth = new AuthMiddleware;
+Router::post('admin/add-customer', function () {
+   (new AdminController)->createCustomer($_POST);
+});
 
-   App::view('admin/customer_transactions', ['user' => $auth->user()]);
+Router::get('admin/customer-transactions/{id}', function ($id) {
+   (new AdminController)->customerTransactions($id);
 });

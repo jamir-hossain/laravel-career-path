@@ -140,7 +140,7 @@
     <main class="-mt-32">
       <div class="px-4 pb-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="bg-white rounded-lg">
-          <form class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
+          <form action="" method="POST" class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
             <div class="px-4 py-6 sm:p-8">
               <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div class="sm:col-span-3">

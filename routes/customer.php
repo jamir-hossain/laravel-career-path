@@ -10,8 +10,9 @@ use App\Model\UserModel;
 
 Router::get('customer/dashboard', function () {
    $user = (new AuthMiddleware)->user();
+   $transactions = (new TransactionModel)->whereWithRelation('customer_id', $user['id']);
 
-   App::view('customer/dashboard', ['user' => $user]);
+   App::view('customer/dashboard', ['user' => $user, 'transactions' => $transactions]);
 });
 
 

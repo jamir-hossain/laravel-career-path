@@ -89,7 +89,19 @@ class Model
       $stmt->execute();
 
       // Fetch the result as an associative array
-      $result = $stmt->fetch(PDO::FETCH_ASSOC);
+      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      return $result;
+   }
+
+   public function getAll()
+   {
+      $sql = "SELECT * FROM $this->table;";
+      $stmt = $this->storage->prepare($sql);
+      $stmt->execute();
+
+      // Fetch the result as an associative array
+      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       return $result;
    }

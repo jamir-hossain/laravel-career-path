@@ -160,150 +160,34 @@
             <div class="flow-root mt-8">
               <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <ul role="list" class="divide-y divide-gray-100">
-                  <li class="relative flex justify-between px-4 py-5 gap-x-6 hover:bg-gray-50 sm:px-6 lg:px-8">
-                    <div class="flex gap-x-4">
-                      <!-- You can either use image or name initials as avatar -->
-                      <!-- <img
-                          class="flex-none w-12 h-12 rounded-full bg-gray-50"
-                          src="https://avatars.githubusercontent.com/u/61485238"
-                          alt="Al Nahian" /> -->
-                      <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-sky-500">
-                        <span class="text-xl font-medium leading-none text-white">AN</span>
-                      </span>
+                  <?php
+                  foreach ($customers as $customer) {
+                    $id = $customer['id'];
+                    $name = $customer['name'];
+                    $email = $customer['email'];
 
-                      <div class="flex-auto min-w-0">
-                        <p class="text-sm font-semibold leading-6 text-gray-900">
-                          <a href="/admin/customer-transactions">
-                            <span class="absolute inset-x-0 bottom-0 -top-px"></span>
-                            Al Nahian
-                          </a>
-                        </p>
-                        <p class="flex mt-1 text-xs leading-5 text-gray-500">
-                          <a href="/admin/customer-transactions" class="relative truncate hover:underline">alnahian@2003.com</a>
-                        </p>
-                      </div>
-                    </div>
-                  </li>
+                    print("<li class='relative flex justify-between px-4 py-5 gap-x-6 hover:bg-gray-50 sm:px-6 lg:px-8'>
+                        <div class='flex gap-x-4'>
+                          <img class='flex-none w-12 h-12 rounded-full bg-gray-50' src='https://ui-avatars.com/api/?name=$name&background=random' alt='$name' />
 
-                  <li class="relative flex justify-between px-4 py-5 gap-x-6 hover:bg-gray-50 sm:px-6 lg:px-8">
-                    <div class="flex gap-x-4">
-                      <!-- Use Image or Name Initials -->
-                      <!-- <img
-                          class="flex-none w-12 h-12 rounded-full bg-gray-50"
-                          src="https://avatars.githubusercontent.com/u/44245907"
-                          alt="Muntaser Muttaqi" /> -->
-                      <span class="inline-flex items-center justify-center w-12 h-12 bg-purple-500 rounded-full">
-                        <span class="text-xl font-medium leading-none text-white">MM</span>
-                      </span>
-                      <div class="flex-auto min-w-0">
-                        <p class="text-sm font-semibold leading-6 text-gray-900">
-                          <a href="/admin/customer-transactions">
-                            <span class="absolute inset-x-0 bottom-0 -top-px"></span>
-                            Muntaser Muttaqi
-                          </a>
-                        </p>
-                        <p class="flex mt-1 text-xs leading-5 text-gray-500">
-                          <a href="/admin/customer-transactions" class="relative truncate hover:underline">muntaser@muttaqi.com</a>
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-
-                  <li class="relative flex justify-between px-4 py-5 gap-x-6 hover:bg-gray-50 sm:px-6 lg:px-8">
-                    <div class="flex gap-x-4">
-                      <!-- <img
-                          class="flex-none w-12 h-12 rounded-full bg-gray-50"
-                          src="https://avatars.githubusercontent.com/u/1510147"
-                          alt="Povilas Korop" /> -->
-                      <span class="inline-flex items-center justify-center w-12 h-12 bg-teal-500 rounded-full">
-                        <span class="text-xl font-medium leading-none text-white">PK</span>
-                      </span>
-                      <div class="flex-auto min-w-0">
-                        <p class="text-sm font-semibold leading-6 text-gray-900">
-                          <a href="/admin/customer-transactions">
-                            <span class="absolute inset-x-0 bottom-0 -top-px"></span>
-                            Povilas Korop
-                          </a>
-                        </p>
-                        <p class="flex mt-1 text-xs leading-5 text-gray-500">
-                          <a href="/admin/customer-transactions" class="relative truncate hover:underline">povilas@korop.com</a>
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-
-                  <li class="relative flex justify-between px-4 py-5 gap-x-6 hover:bg-gray-50 sm:px-6 lg:px-8">
-                    <div class="flex gap-x-4">
-                      <!-- Use Avatar or Name Initials -->
-                      <!-- <img
-                          class="flex-none w-12 h-12 rounded-full bg-gray-50"
-                          src="https://avatars.githubusercontent.com/u/958072"
-                          alt="Laravel Framework" /> -->
-                      <span class="inline-flex items-center justify-center w-12 h-12 bg-red-500 rounded-full">
-                        <span class="text-xl font-medium leading-none text-white">LF</span>
-                      </span>
-                      <div class="flex-auto min-w-0">
-                        <p class="text-sm font-semibold leading-6 text-gray-900">
-                          <a href="/admin/customer-transactions">
-                            <span class="absolute inset-x-0 bottom-0 -top-px"></span>
-                            Laravel Framework
-                          </a>
-                        </p>
-                        <p class="flex mt-1 text-xs leading-5 text-gray-500">
-                          <a href="/admin/customer-transactions" class="relative truncate hover:underline">laravel@framework.com</a>
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-
-                  <li class="relative flex justify-between px-4 py-5 gap-x-6 hover:bg-gray-50 sm:px-6 lg:px-8">
-                    <div class="flex gap-x-4">
-                      <!-- Use Avatar or Name Initials -->
-                      <!-- <img
-                          class="flex-none w-12 h-12 rounded-full bg-gray-50"
-                          src="https://avatars.githubusercontent.com/u/183223"
-                          alt="Jeffrey Way" /> -->
-                      <span class="inline-flex items-center justify-center w-12 h-12 bg-blue-500 rounded-full">
-                        <span class="text-xl font-medium leading-none text-white">JW</span>
-                      </span>
-                      <div class="flex-auto min-w-0">
-                        <p class="text-sm font-semibold leading-6 text-gray-900">
-                          <a href="/admin/customer-transactions">
-                            <span class="absolute inset-x-0 bottom-0 -top-px"></span>
-                            Jeffrey Way
-                          </a>
-                        </p>
-                        <p class="flex mt-1 text-xs leading-5 text-gray-500">
-                          <a href="/admin/customer-transactions" class="relative truncate hover:underline">jeffrey@way.com</a>
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-
-                  <li class="relative flex justify-between px-4 py-5 gap-x-6 hover:bg-gray-50 sm:px-6 lg:px-8">
-                    <div class="flex gap-x-4">
-                      <!-- Use Avatar or Name Initilas -->
-                      <!-- <img
-                          class="flex-none w-12 h-12 rounded-full bg-gray-50"
-                          src="https://avatars.githubusercontent.com/u/1692996?v=4"
-                          alt="Alex Garrett-Smith" /> -->
-
-                      <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-amber-500">
-                        <span class="text-xl font-medium leading-none text-white">AG</span>
-                      </span>
-                      <div class="flex-auto min-w-0">
-                        <p class="text-sm font-semibold leading-6 text-gray-900">
-                          <a href="/admin/customer-transactions">
-                            <span class="absolute inset-x-0 bottom-0 -top-px"></span>
-                            Alex Garrett-Smith
-                          </a>
-                        </p>
-                        <p class="flex mt-1 text-xs leading-5 text-gray-500">
-                          <a href="/admin/customer-transactions" class="relative truncate hover:underline">alex@smith.com</a>
-                        </p>
-                      </div>
-                    </div>
-                  </li>
+                          <div class='flex-auto min-w-0'>
+                            <p class='text-sm font-semibold leading-6 text-gray-900'>
+                              <a href='/admin/customer-transactions/$id'>
+                                <span class='absolute inset-x-0 bottom-0 -top-px'></span>
+                                $name
+                              </a>
+                            </p>
+                            <p class='flex mt-1 text-xs leading-5 text-gray-500'>
+                              <a href='/admin/customer-transactions/$id' class='relative truncate hover:underline'>
+                                $email
+                              </a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>"
+                    );
+                  }
+                  ?>
                 </ul>
               </div>
             </div>
